@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2095ED1CF7D9AE00B324C8 /* YQAnimationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2095EC1CF7D9AE00B324C8 /* YQAnimationLayer.m */; };
 		0E3790CC1CF69655006FAC55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3790CB1CF69655006FAC55 /* main.m */; };
 		0E3790CF1CF69655006FAC55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3790CE1CF69655006FAC55 /* AppDelegate.m */; };
 		0E3790D21CF69655006FAC55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3790D11CF69655006FAC55 /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		0E3790DA1CF69655006FAC55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E3790D81CF69655006FAC55 /* LaunchScreen.storyboard */; };
 		0E3790E51CF69655006FAC55 /* AnimationProjTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3790E41CF69655006FAC55 /* AnimationProjTests.m */; };
 		0E3790F01CF69655006FAC55 /* AnimationProjUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3790EF1CF69655006FAC55 /* AnimationProjUITests.m */; };
+		0E3790FF1CF6D562006FAC55 /* YanhuaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3790FE1CF6D562006FAC55 /* YanhuaViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E2095EB1CF7D9AE00B324C8 /* YQAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQAnimationLayer.h; sourceTree = "<group>"; };
+		0E2095EC1CF7D9AE00B324C8 /* YQAnimationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQAnimationLayer.m; sourceTree = "<group>"; };
 		0E3790C71CF69655006FAC55 /* AnimationProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E3790CB1CF69655006FAC55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0E3790CD1CF69655006FAC55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		0E3790EB1CF69655006FAC55 /* AnimationProjUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationProjUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E3790EF1CF69655006FAC55 /* AnimationProjUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationProjUITests.m; sourceTree = "<group>"; };
 		0E3790F11CF69655006FAC55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E3790FD1CF6D562006FAC55 /* YanhuaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YanhuaViewController.h; sourceTree = "<group>"; };
+		0E3790FE1CF6D562006FAC55 /* YanhuaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YanhuaViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +107,14 @@
 		0E3790C91CF69655006FAC55 /* AnimationProj */ = {
 			isa = PBXGroup;
 			children = (
+				0E2095EB1CF7D9AE00B324C8 /* YQAnimationLayer.h */,
+				0E2095EC1CF7D9AE00B324C8 /* YQAnimationLayer.m */,
 				0E3790CD1CF69655006FAC55 /* AppDelegate.h */,
 				0E3790CE1CF69655006FAC55 /* AppDelegate.m */,
 				0E3790D01CF69655006FAC55 /* ViewController.h */,
 				0E3790D11CF69655006FAC55 /* ViewController.m */,
+				0E3790FD1CF6D562006FAC55 /* YanhuaViewController.h */,
+				0E3790FE1CF6D562006FAC55 /* YanhuaViewController.m */,
 				0E3790D31CF69655006FAC55 /* Main.storyboard */,
 				0E3790D61CF69655006FAC55 /* Assets.xcassets */,
 				0E3790D81CF69655006FAC55 /* LaunchScreen.storyboard */,
@@ -272,7 +282,9 @@
 			files = (
 				0E3790D21CF69655006FAC55 /* ViewController.m in Sources */,
 				0E3790CF1CF69655006FAC55 /* AppDelegate.m in Sources */,
+				0E3790FF1CF6D562006FAC55 /* YanhuaViewController.m in Sources */,
 				0E3790CC1CF69655006FAC55 /* main.m in Sources */,
+				0E2095ED1CF7D9AE00B324C8 /* YQAnimationLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +508,7 @@
 				0E3790F61CF69655006FAC55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E3790F71CF69655006FAC55 /* Build configuration list for PBXNativeTarget "AnimationProjTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +517,7 @@
 				0E3790F91CF69655006FAC55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E3790FA1CF69655006FAC55 /* Build configuration list for PBXNativeTarget "AnimationProjUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +526,7 @@
 				0E3790FC1CF69655006FAC55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
