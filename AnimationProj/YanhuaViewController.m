@@ -7,6 +7,7 @@
 
 #import "YanhuaViewController.h"
 #import "YQAnimationLayer.h"
+#import "PhotoViewController.h"
 
 @interface YanhuaViewController ()
 @property (nonatomic, strong)CAEmitterLayer * emitterLayer;
@@ -15,22 +16,27 @@
 @implementation YanhuaViewController
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden = YES;
     
+    self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor colorWithRed:22.0f/255.0 green:22.0f/255.0 blue:22.0f/255.0 alpha:1.0];
 
     [self SetupEmitter];
+
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-
     for (id layer in self.view.layer.sublayers) {
         if([layer isKindOfClass:[YQAnimationLayer class]])
         {
-            [layer removeFromSuperlayer];
+//            [layer removeFromSuperlayer];
+            return;
         }
     }
-    [YQAnimationLayer createAnimationLayerWithString:@"某某，我爱你" andRect: CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width) andView:self.view andFont:[UIFont boldSystemFontOfSize:40] andStrokeColor:[UIColor cyanColor]];
+    [YQAnimationLayer createAnimationLayerWithString:@"hello，word" andRect: CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.width) andView:self.view andFont:[UIFont boldSystemFontOfSize:40] andStrokeColor:[UIColor cyanColor]];
+    
+    [self performSelector:@selector(creatHeart) withObject:@"Grand Central Dispatch" afterDelay:5.0];
 }
 
 - (void)snow{
@@ -163,7 +169,6 @@
 }
 
 - (CABasicAnimation *)moveY:(float)time Y:(NSNumber *)y //纵向移动
-
 {
     
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
@@ -218,5 +223,43 @@
     return image;
 }
 
+#pragma mark - 心
+- (void)creatHeart
+{
+    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80, self.view.frame.size.height - 80, 60, 60)];
+    [self.view addSubview:imgV];
+    imgV.image = [UIImage imageNamed:@"heart_01.jpg"];
+    [imgV.layer addAnimation:[self SetupScaleAnimationHeart] forKey:@"scals"];
+    imgV.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performNext:)];
+    [imgV addGestureRecognizer:tap];
+}
+
+- (CAAnimation *)SetupScaleAnimationHeart
+{
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.duration = 0.8;
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:1.5];
+    scaleAnimation.repeatCount = MAXFLOAT;
+    scaleAnimation.autoreverses = YES;
+    scaleAnimation.fillMode = kCAFillModeForwards;
+    scaleAnimation.removedOnCompletion = NO;
+    
+    return scaleAnimation;
+}
+
+- (void)performNext:(UITapGestureRecognizer *)tap
+{
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:1.0];
+    [animation setType:@"cube"];
+    [animation setSubtype:kCATransitionFromRight];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [self.navigationController.view.layer addAnimation:animation forKey:@"cube"];
+    
+    [self performSegueWithIdentifier:@"PhotoViewController" sender:nil];
+}
 
 @end

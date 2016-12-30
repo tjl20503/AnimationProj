@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="td4-Pk-O1T">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="wjm-dQ-HGb">
+            <objects>
+                <navigationController id="td4-Pk-O1T" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CXc-XT-F1U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="3bY-nW-4nL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eyf-mG-jt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-177" y="384"/>
+        </scene>
         <!--Yanhua View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -18,9 +34,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="TPh-xg-AXV"/>
+                    <connections>
+                        <segue destination="4O3-qb-4II" kind="push" identifier="PhotoViewController" id="YZt-BR-PV1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="527" y="384"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="y3m-Se-77j">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewController" id="4O3-qb-4II" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bxl-Ge-CRo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lyh-5T-DhZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4HY-sI-xZ3">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gsI-0e-UQj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eea-TT-bFA">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gsI-0e-UQj" firstAttribute="leading" secondItem="4HY-sI-xZ3" secondAttribute="leading" id="1Sc-OR-rHt"/>
+                            <constraint firstAttribute="trailing" secondItem="gsI-0e-UQj" secondAttribute="trailing" id="b8c-oM-Afi"/>
+                            <constraint firstItem="gsI-0e-UQj" firstAttribute="top" secondItem="Bxl-Ge-CRo" secondAttribute="bottom" id="h5h-2g-wOY"/>
+                            <constraint firstItem="Lyh-5T-DhZ" firstAttribute="top" secondItem="gsI-0e-UQj" secondAttribute="bottom" id="lNa-jn-3UO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3f7-3k-86I"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collection" destination="gsI-0e-UQj" id="hEQ-HO-hwe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVR-ge-lPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="384"/>
         </scene>
     </scenes>
 </document>

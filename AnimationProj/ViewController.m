@@ -28,11 +28,14 @@
     label.textColor = [UIColor redColor];
     [self.view addSubview:label];
     _label = label;
-    [_label.layer addAnimation:[self rotation:1.0f degree:M_PI_4*2000 direction:1000 repeatCount:MAXFLOAT] forKey:@"scaleAnimation"];
+    [_label.layer addAnimation:[self SetupGroupAnimation] forKey:@"scale"];
 }
 
-
-- (CAAnimation *)SetupScaleAnimation{
+/**
+ *  心跳
+ */
+- (CAAnimation *)SetupScaleAnimation
+{
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.duration = 3.0;
     scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];
@@ -45,8 +48,11 @@
     return scaleAnimation;
 }
 
-
-- (CAAnimation *)SetupMoveAnimation{
+/**
+ *  上下移动
+ */
+- (CAAnimation *)SetupMoveAnimation
+{
     CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     moveAnimation.fromValue = [NSValue valueWithCGPoint:_label.layer.position];
     moveAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(_label.layer.position.x, 667-60)];
@@ -55,7 +61,11 @@
     return moveAnimation;
 }
 
-- (CAAnimation *)SetupRotationAnimation{
+/**
+ *  翻转
+ */
+- (CAAnimation *)SetupRotationAnimation
+{
     CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.x"];
     rotationAnimation.duration = 1.5;
     rotationAnimation.autoreverses = YES;
@@ -66,8 +76,11 @@
     return rotationAnimation;
 }
 
-
-- (CAAnimation *)SetupGroupAnimation{
+/**
+ *  移动放大翻转
+ */
+- (CAAnimation *)SetupGroupAnimation
+{
     CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
     groupAnimation.duration = 3.0;
     groupAnimation.animations = @[[self SetupScaleAnimation], [self SetupMoveAnimation], [self SetupRotationAnimation]];
@@ -76,10 +89,11 @@
     return groupAnimation;
 }
 
+/**
+ *  闪烁
+ */
 - (CABasicAnimation *)SetupOpacityAnimation
-
 {
-    
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"opacity"];
     
     animation.fromValue = [NSNumber numberWithFloat:1.0];
@@ -97,11 +111,12 @@
     animation.fillMode = kCAFillModeForwards;
     
     return animation;
-    
 }
 
-- (CABasicAnimation *)opacityTimes_Animation:(float)repeatTimes durTimes:(float)time; //有闪烁次数的动画
-
+/**
+ *  有闪烁次数的动画
+ */
+- (CABasicAnimation *)opacityTimes_Animation:(float)repeatTimes durTimes:(float)time
 {
     
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -126,9 +141,10 @@
     
 }
 
-
+/**
+ *  横向移动
+ */
 - (CABasicAnimation *)moveX:(float)time X:(NSNumber *)x //横向移动
-
 {
     
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
@@ -146,7 +162,9 @@
 }
 
 
-
+/**
+ *  纵向移动
+ */
 - (CABasicAnimation *)moveY:(float)time Y:(NSNumber *)y //纵向移动
 
 {
@@ -166,9 +184,10 @@
 }
 
 
-
-- (CABasicAnimation *)scale:(NSNumber *)Multiple orgin:(NSNumber *)orginMultiple durTimes:(float)time Rep:(float)repeatTimes //缩放
-
+/**
+ *  缩放
+ */
+- (CABasicAnimation *)scale:(NSNumber *)Multiple orgin:(NSNumber *)orginMultiple durTimes:(float)time Rep:(float)repeatTimes
 {
     
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
@@ -192,8 +211,10 @@
 }
 
 
-
-- (CAAnimationGroup *)groupAnimation:(NSArray *)animationAry durTimes:(float)time Rep:(float)repeatTimes //组合动画
+/**
+ * 组合动画
+ */
+- (CAAnimationGroup *)groupAnimation:(NSArray *)animationAry durTimes:(float)time Rep:(float)repeatTimes
 
 {
     
@@ -214,9 +235,10 @@
 }
 
 
-
-- (CAKeyframeAnimation *)keyframeAniamtion:(CGMutablePathRef)path durTimes:(float)time Rep:(float)repeatTimes //路径动画
-
+/**
+ *  路径动画
+ */
+- (CAKeyframeAnimation *)keyframeAniamtion:(CGMutablePathRef)path durTimes:(float)time Rep:(float)repeatTimes
 {
     
     CAKeyframeAnimation *animation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -240,11 +262,11 @@
 }
 
 
-
-- (CABasicAnimation *)movepoint:(CGPoint )point //点移动
-
+/**
+ *  点移动
+ */
+- (CABasicAnimation *)movepoint:(CGPoint )point
 {
-    
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.translation"];
     
     animation.toValue=[NSValue valueWithCGPoint:point];
@@ -254,22 +276,19 @@
     animation.fillMode=kCAFillModeForwards;
     
     return animation;
-    
 }
 
 
-
-- (CABasicAnimation *)rotation:(float)dur degree:(float)degree direction:(int)direction repeatCount:(int)repeatCount //旋转
-
+/**
+ *  旋转
+ */
+- (CABasicAnimation *)rotation:(float)dur degree:(float)degree direction:(int)direction repeatCount:(int)repeatCount
 {
-    
     CATransform3D rotationTransform  = CATransform3DMakeRotation(degree, 0, 0,direction);
     
     CABasicAnimation* animation;
     
     animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    
-    
     
     animation.toValue= [NSValue valueWithCATransform3D:rotationTransform];
     
@@ -287,10 +306,7 @@
     
     animation.delegate= self;
     
-    
-    
     return animation;
-    
 }
 
 @end
